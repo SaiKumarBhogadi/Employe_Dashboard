@@ -653,6 +653,69 @@ body {
 }
 
 
+
+
+/* ============================================================
+   TABLE WRAPPER - RESPONSIVE SCROLLABLE CONTAINER
+   ============================================================ */
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+}
+
+.table-wrapper::-webkit-scrollbar {
+    height: 6px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+    background: var(--light-bg);
+    border-radius: 10px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: var(--secondary-teal);
+    border-radius: 10px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #4DAAA8;
+}
+
+/* Desktop - No scrolling needed */
+@media (min-width: 1025px) {
+    .table-wrapper {
+        overflow-x: visible;
+    }
+}
+
+/* Tablet - Horizontal scroll if needed */
+@media (max-width: 1024px) {
+    .table-wrapper {
+        overflow-x: auto;
+    }
+}
+
+/* Mobile - Always allow horizontal scroll */
+@media (max-width: 768px) {
+    .table-wrapper {
+        overflow-x: auto;
+        margin: 0 -15px;
+        padding: 0 15px;
+    }
+}
+
+/* Small Mobile - Tighter scrolling */
+@media (max-width: 480px) {
+    .table-wrapper {
+        overflow-x: auto;
+        margin: 0 -12px;
+        padding: 0 12px;
+    }
+}
 /* ============================================================
    EMPLOYEE BIODATA TABLE STYLES
    ============================================================ */

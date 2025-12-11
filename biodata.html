@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STACKLY - Employee Bio Data</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body class="dashboard-page">
     <div class="dashboard-wrapper">
-        
+
         <!-- Left Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-logo">
@@ -17,25 +19,30 @@
 
             <nav class="sidebar-menu">
                 <ul>
-                    <li><a href="index.html" class="menu-item" data-page="dashboard"><span class="menu-icon">📊</span><span class="menu-text">Dashboard</span></a></li>
-                    <li><a href="biodata.html" class="menu-item active" data-page="biodata"><span class="menu-icon">👤</span><span class="menu-text">Employee Bio Data</span></a></li>
-                    <li><a href="training.html" class="menu-item" data-page="training"><span class="menu-icon">📚</span><span class="menu-text">Training Details</span></a></li>
-                    <li><a href="project.html" class="menu-item" data-page="project"><span class="menu-icon">🎯</span><span class="menu-text">Projects</span></a></li>
-                    <li><a href="users_manager.html" class="menu-item" data-page="users"><span class="menu-icon">👥</span><span class="menu-text">User Management</span></a></li>
+                    <li><a href="index.html" class="menu-item" data-page="dashboard"><span
+                                class="menu-icon">📊</span><span class="menu-text">Dashboard</span></a></li>
+                    <li><a href="biodata.html" class="menu-item active" data-page="biodata"><span
+                                class="menu-icon">👤</span><span class="menu-text">Employee Bio Data</span></a></li>
+                    <li><a href="training.html" class="menu-item" data-page="training"><span
+                                class="menu-icon">📚</span><span class="menu-text">Training Details</span></a></li>
+                    <li><a href="project.html" class="menu-item" data-page="project"><span
+                                class="menu-icon">🎯</span><span class="menu-text">Projects</span></a></li>
+                    <li><a href="users_manager.html" class="menu-item" data-page="users"><span
+                                class="menu-icon">👥</span><span class="menu-text">User Management</span></a></li>
                 </ul>
             </nav>
         </aside>
 
         <!-- Main Content Area -->
         <div class="main-content">
-            
+
             <!-- Top Navigation Bar -->
             <header class="top-navbar">
                 <div class="navbar-left">
                     <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
                     <h3 class="page-title">Employee Bio Data</h3>
                 </div>
-                
+
                 <div class="navbar-right">
                     <div class="profile-dropdown">
                         <div class="profile-circle"><span class="profile-initial">JD</span></div>
@@ -66,7 +73,8 @@
 
                     <!-- Search and Filters -->
                     <div class="list-controls">
-                        <input type="text" id="searchEmployees" placeholder="Search by name, email, or ID..." class="search-input" onkeyup="searchEmployeesTable()">
+                        <input type="text" id="searchEmployees" placeholder="Search by name, email, or ID..."
+                            class="search-input" onkeyup="searchEmployeesTable()">
                         <select id="departmentFilter" class="role-filter" onchange="filterByDepartment()">
                             <option value="">All Departments</option>
                             <option value="Software Development">Software Development</option>
@@ -75,27 +83,33 @@
                             <option value="Operations">Operations</option>
                             <option value="Training">Training & Development</option>
                         </select>
-                        <a href="add_employee.html" class="btn btn-primary" style="text-decoration: none;">+ Add Employee</a>
+                        <a href="add_employee.html" class="btn btn-primary" style="text-decoration: none;">+ Add
+                            Employee</a>
                     </div>
 
                     <!-- Employees Table -->
                     <div class="table-container">
+                        <div class="table-wrapper">
                         <table class="employees-biodata-table">
                             <thead>
                                 <tr>
+                                    <th id="serial-no" style="width: 30px;">S.No</th>
                                     <th>Employee Name</th>
                                     <th>Employee ID</th>
                                     <th>Email</th>
                                     <th>Department</th>
                                     <th>Position</th>
                                     <th>Joining Date</th>
-                                    <th>Status</th>
+                                    <!-- <th>Status</th> -->
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody id="employeesTableBody">
                                 <!-- Employee 1 -->
-                                <tr data-employee-name="John Doe" data-employee-id="EMP-001" data-department="Software Development">
+                                <!-- Employee 1 -->
+                                <tr data-employee-name="John Doe" data-employee-id="EMP-001"
+                                    data-department="Software Development">
+                                    <td>1</td>
                                     <td>
                                         <div class="user-cell">
                                             <div class="user-avatar">JD</div>
@@ -107,7 +121,7 @@
                                     <td>Software Development</td>
                                     <td>Senior Developer</td>
                                     <td>Jan 15, 2022</td>
-                                    <td><span class="status-badge active">Active</span></td>
+                                    <!-- <td><span class="status-badge active">Active</span></td> -->
                                     <td>
                                         <button class="action-icon-btn" title="View">👁️</button>
                                         <button class="action-icon-btn" title="Edit">✏️</button>
@@ -115,7 +129,9 @@
                                 </tr>
 
                                 <!-- Employee 2 -->
-                                <tr data-employee-name="Sarah Miller" data-employee-id="EMP-002" data-department="Software Development">
+                                <tr data-employee-name="Sarah Miller" data-employee-id="EMP-002"
+                                    data-department="Software Development">
+                                    <td>2</td>
                                     <td>
                                         <div class="user-cell">
                                             <div class="user-avatar">SM</div>
@@ -127,7 +143,7 @@
                                     <td>Software Development</td>
                                     <td>Scrum Master</td>
                                     <td>Mar 20, 2021</td>
-                                    <td><span class="status-badge active">Active</span></td>
+                                    <!-- <td><span class="status-badge active">Active</span></td> -->
                                     <td>
                                         <button class="action-icon-btn" title="View">👁️</button>
                                         <button class="action-icon-btn" title="Edit">✏️</button>
@@ -135,7 +151,9 @@
                                 </tr>
 
                                 <!-- Employee 3 -->
-                                <tr data-employee-name="Mike Johnson" data-employee-id="EMP-003" data-department="Software Development">
+                                <tr data-employee-name="Mike Johnson" data-employee-id="EMP-003"
+                                    data-department="Software Development">
+                                    <td>3</td>
                                     <td>
                                         <div class="user-cell">
                                             <div class="user-avatar">MJ</div>
@@ -147,7 +165,7 @@
                                     <td>Software Development</td>
                                     <td>QA Engineer</td>
                                     <td>Jun 10, 2022</td>
-                                    <td><span class="status-badge active">Active</span></td>
+                                    <!-- <td><span class="status-badge active">Active</span></td> -->
                                     <td>
                                         <button class="action-icon-btn" title="View">👁️</button>
                                         <button class="action-icon-btn" title="Edit">✏️</button>
@@ -156,6 +174,7 @@
 
                                 <!-- Employee 4 -->
                                 <tr data-employee-name="Emma Wilson" data-employee-id="EMP-004" data-department="HR">
+                                    <td>4</td>
                                     <td>
                                         <div class="user-cell">
                                             <div class="user-avatar">EW</div>
@@ -167,7 +186,7 @@
                                     <td>HR</td>
                                     <td>HR Manager</td>
                                     <td>Feb 01, 2023</td>
-                                    <td><span class="status-badge active">Active</span></td>
+                                    <!-- <td><span class="status-badge active">Active</span></td> -->
                                     <td>
                                         <button class="action-icon-btn" title="View">👁️</button>
                                         <button class="action-icon-btn" title="Edit">✏️</button>
@@ -175,7 +194,9 @@
                                 </tr>
 
                                 <!-- Employee 5 -->
-                                <tr data-employee-name="Alex Chen" data-employee-id="EMP-005" data-department="Software Development">
+                                <tr data-employee-name="Alex Chen" data-employee-id="EMP-005"
+                                    data-department="Software Development">
+                                    <td>5</td>
                                     <td>
                                         <div class="user-cell">
                                             <div class="user-avatar">AC</div>
@@ -187,7 +208,7 @@
                                     <td>Software Development</td>
                                     <td>Junior Developer</td>
                                     <td>Aug 15, 2023</td>
-                                    <td><span class="status-badge active">Active</span></td>
+                                    <!-- <td><span class="status-badge active">Active</span></td> -->
                                     <td>
                                         <button class="action-icon-btn" title="View">👁️</button>
                                         <button class="action-icon-btn" title="Edit">✏️</button>
@@ -196,6 +217,7 @@
 
                                 <!-- Employee 6 -->
                                 <tr data-employee-name="Lisa Park" data-employee-id="EMP-006" data-department="Finance">
+                                    <td>6</td>
                                     <td>
                                         <div class="user-cell">
                                             <div class="user-avatar">LP</div>
@@ -207,7 +229,7 @@
                                     <td>Finance</td>
                                     <td>Finance Analyst</td>
                                     <td>May 10, 2022</td>
-                                    <td><span class="status-badge active">Active</span></td>
+                                    <!-- <td><span class="status-badge active">Active</span></td> -->
                                     <td>
                                         <button class="action-icon-btn" title="View">👁️</button>
                                         <button class="action-icon-btn" title="Edit">✏️</button>
@@ -215,7 +237,9 @@
                                 </tr>
 
                                 <!-- Employee 7 -->
-                                <tr data-employee-name="Rachel Green" data-employee-id="EMP-007" data-department="Operations">
+                                <tr data-employee-name="Rachel Green" data-employee-id="EMP-007"
+                                    data-department="Operations">
+                                    <td>7</td>
                                     <td>
                                         <div class="user-cell">
                                             <div class="user-avatar">RG</div>
@@ -227,7 +251,7 @@
                                     <td>Operations</td>
                                     <td>Operations Manager</td>
                                     <td>Sep 05, 2021</td>
-                                    <td><span class="status-badge active">Active</span></td>
+                                    <!-- <td><span class="status-badge active">Active</span></td> -->
                                     <td>
                                         <button class="action-icon-btn" title="View">👁️</button>
                                         <button class="action-icon-btn" title="Edit">✏️</button>
@@ -235,7 +259,9 @@
                                 </tr>
 
                                 <!-- Employee 8 -->
-                                <tr data-employee-name="Tom Brady" data-employee-id="EMP-008" data-department="Software Development">
+                                <tr data-employee-name="Tom Brady" data-employee-id="EMP-008"
+                                    data-department="Software Development">
+                                    <td>8</td>
                                     <td>
                                         <div class="user-cell">
                                             <div class="user-avatar">TB</div>
@@ -247,7 +273,7 @@
                                     <td>Software Development</td>
                                     <td>Backend Developer</td>
                                     <td>Nov 20, 2022</td>
-                                    <td><span class="status-badge active">Active</span></td>
+                                    <!-- <td><span class="status-badge active">Active</span></td> -->
                                     <td>
                                         <button class="action-icon-btn" title="View">👁️</button>
                                         <button class="action-icon-btn" title="Edit">✏️</button>
@@ -255,7 +281,9 @@
                                 </tr>
 
                                 <!-- Employee 9 -->
-                                <tr data-employee-name="Nina Patel" data-employee-id="EMP-009" data-department="Training">
+                                <tr data-employee-name="Nina Patel" data-employee-id="EMP-009"
+                                    data-department="Training">
+                                    <td>9</td>
                                     <td>
                                         <div class="user-cell">
                                             <div class="user-avatar">NP</div>
@@ -267,7 +295,7 @@
                                     <td>Training & Development</td>
                                     <td>Training Coordinator</td>
                                     <td>Dec 12, 2023</td>
-                                    <td><span class="status-badge active">Active</span></td>
+                                    <!-- <td><span class="status-badge active">Active</span></td> -->
                                     <td>
                                         <button class="action-icon-btn" title="View">👁️</button>
                                         <button class="action-icon-btn" title="Edit">✏️</button>
@@ -275,7 +303,9 @@
                                 </tr>
 
                                 <!-- Employee 10 -->
-                                <tr data-employee-name="Chris Lee" data-employee-id="EMP-010" data-department="Software Development">
+                                <tr data-employee-name="Chris Lee" data-employee-id="EMP-010"
+                                    data-department="Software Development">
+                                    <td>10</td>
                                     <td>
                                         <div class="user-cell">
                                             <div class="user-avatar">CL</div>
@@ -287,7 +317,7 @@
                                     <td>Software Development</td>
                                     <td>DevOps Engineer</td>
                                     <td>Jul 08, 2023</td>
-                                    <td><span class="status-badge active">Active</span></td>
+                                    <!-- <td><span class="status-badge active">Active</span></td> -->
                                     <td>
                                         <button class="action-icon-btn" title="View">👁️</button>
                                         <button class="action-icon-btn" title="Edit">✏️</button>
@@ -295,7 +325,9 @@
                                 </tr>
 
                                 <!-- Employee 11 -->
-                                <tr data-employee-name="David Kumar" data-employee-id="EMP-011" data-department="Finance">
+                                <tr data-employee-name="David Kumar" data-employee-id="EMP-011"
+                                    data-department="Finance">
+                                    <td>11</td>
                                     <td>
                                         <div class="user-cell">
                                             <div class="user-avatar">DK</div>
@@ -307,7 +339,7 @@
                                     <td>Finance</td>
                                     <td>Finance Manager</td>
                                     <td>Apr 18, 2020</td>
-                                    <td><span class="status-badge active">Active</span></td>
+                                    <!-- <td><span class="status-badge active">Active</span></td> -->
                                     <td>
                                         <button class="action-icon-btn" title="View">👁️</button>
                                         <button class="action-icon-btn" title="Edit">✏️</button>
@@ -316,6 +348,7 @@
 
                                 <!-- Employee 12 -->
                                 <tr data-employee-name="Emily Brown" data-employee-id="EMP-012" data-department="HR">
+                                    <td>12</td>
                                     <td>
                                         <div class="user-cell">
                                             <div class="user-avatar">EB</div>
@@ -327,7 +360,7 @@
                                     <td>HR</td>
                                     <td>HR Specialist</td>
                                     <td>Oct 03, 2022</td>
-                                    <td><span class="status-badge active">Active</span></td>
+                                    <!-- <td><span class="status-badge active">Active</span></td> -->
                                     <td>
                                         <button class="action-icon-btn" title="View">👁️</button>
                                         <button class="action-icon-btn" title="Edit">✏️</button>
@@ -335,7 +368,9 @@
                                 </tr>
 
                                 <!-- Employee 13 -->
-                                <tr data-employee-name="Michael Wilson" data-employee-id="EMP-013" data-department="Operations">
+                                <tr data-employee-name="Michael Wilson" data-employee-id="EMP-013"
+                                    data-department="Operations">
+                                    <td>13</td>
                                     <td>
                                         <div class="user-cell">
                                             <div class="user-avatar">MW</div>
@@ -347,7 +382,7 @@
                                     <td>Operations</td>
                                     <td>Operations Specialist</td>
                                     <td>Jan 25, 2023</td>
-                                    <td><span class="status-badge active">Active</span></td>
+                                    <!-- <td><span class="status-badge active">Active</span></td> -->
                                     <td>
                                         <button class="action-icon-btn" title="View">👁️</button>
                                         <button class="action-icon-btn" title="Edit">✏️</button>
@@ -355,7 +390,9 @@
                                 </tr>
 
                                 <!-- Employee 14 -->
-                                <tr data-employee-name="Sophie Turner" data-employee-id="EMP-014" data-department="Software Development">
+                                <tr data-employee-name="Sophie Turner" data-employee-id="EMP-014"
+                                    data-department="Software Development">
+                                    <td>14</td>
                                     <td>
                                         <div class="user-cell">
                                             <div class="user-avatar">ST</div>
@@ -367,7 +404,7 @@
                                     <td>Software Development</td>
                                     <td>Frontend Developer</td>
                                     <td>Feb 14, 2023</td>
-                                    <td><span class="status-badge active">Active</span></td>
+                                    <!-- <td><span class="status-badge active">Active</span></td> -->
                                     <td>
                                         <button class="action-icon-btn" title="View">👁️</button>
                                         <button class="action-icon-btn" title="Edit">✏️</button>
@@ -375,7 +412,9 @@
                                 </tr>
 
                                 <!-- Employee 15 -->
-                                <tr data-employee-name="James Anderson" data-employee-id="EMP-015" data-department="Software Development">
+                                <tr data-employee-name="James Anderson" data-employee-id="EMP-015"
+                                    data-department="Software Development">
+                                    <td>15</td>
                                     <td>
                                         <div class="user-cell">
                                             <div class="user-avatar">JA</div>
@@ -387,7 +426,7 @@
                                     <td>Software Development</td>
                                     <td>Backend Developer</td>
                                     <td>May 22, 2023</td>
-                                    <td><span class="status-badge active">Active</span></td>
+                                    <!-- <td><span class="status-badge active">Active</span></td> -->
                                     <td>
                                         <button class="action-icon-btn" title="View">👁️</button>
                                         <button class="action-icon-btn" title="Edit">✏️</button>
@@ -395,7 +434,9 @@
                                 </tr>
 
                                 <!-- Employee 16 -->
-                                <tr data-employee-name="Olivia Martinez" data-employee-id="EMP-016" data-department="Finance">
+                                <tr data-employee-name="Olivia Martinez" data-employee-id="EMP-016"
+                                    data-department="Finance">
+                                    <td>16</td>
                                     <td>
                                         <div class="user-cell">
                                             <div class="user-avatar">OM</div>
@@ -407,7 +448,7 @@
                                     <td>Finance</td>
                                     <td>Accountant</td>
                                     <td>Aug 30, 2022</td>
-                                    <td><span class="status-badge active">Active</span></td>
+                                    <!-- <td><span class="status-badge active">Active</span></td> -->
                                     <td>
                                         <button class="action-icon-btn" title="View">👁️</button>
                                         <button class="action-icon-btn" title="Edit">✏️</button>
@@ -415,7 +456,9 @@
                                 </tr>
 
                                 <!-- Employee 17 -->
-                                <tr data-employee-name="Kevin White" data-employee-id="EMP-017" data-department="Operations">
+                                <tr data-employee-name="Kevin White" data-employee-id="EMP-017"
+                                    data-department="Operations">
+                                    <td>17</td>
                                     <td>
                                         <div class="user-cell">
                                             <div class="user-avatar">KW</div>
@@ -427,7 +470,7 @@
                                     <td>Operations</td>
                                     <td>Logistics Coordinator</td>
                                     <td>Sep 12, 2023</td>
-                                    <td><span class="status-badge active">Active</span></td>
+                                    <!-- <td><span class="status-badge active">Active</span></td> -->
                                     <td>
                                         <button class="action-icon-btn" title="View">👁️</button>
                                         <button class="action-icon-btn" title="Edit">✏️</button>
@@ -435,7 +478,9 @@
                                 </tr>
 
                                 <!-- Employee 18 -->
-                                <tr data-employee-name="Jessica Taylor" data-employee-id="EMP-018" data-department="Training">
+                                <tr data-employee-name="Jessica Taylor" data-employee-id="EMP-018"
+                                    data-department="Training">
+                                    <td>18</td>
                                     <td>
                                         <div class="user-cell">
                                             <div class="user-avatar">JT</div>
@@ -447,7 +492,7 @@
                                     <td>Training & Development</td>
                                     <td>Training Manager</td>
                                     <td>Nov 09, 2021</td>
-                                    <td><span class="status-badge active">Active</span></td>
+                                    <!-- <td><span class="status-badge active">Active</span></td> -->
                                     <td>
                                         <button class="action-icon-btn" title="View">👁️</button>
                                         <button class="action-icon-btn" title="Edit">✏️</button>
@@ -455,7 +500,9 @@
                                 </tr>
 
                                 <!-- Employee 19 -->
-                                <tr data-employee-name="Daniel Garcia" data-employee-id="EMP-019" data-department="Software Development">
+                                <tr data-employee-name="Daniel Garcia" data-employee-id="EMP-019"
+                                    data-department="Software Development">
+                                    <td>19</td>
                                     <td>
                                         <div class="user-cell">
                                             <div class="user-avatar">DG</div>
@@ -467,7 +514,7 @@
                                     <td>Software Development</td>
                                     <td>Full Stack Developer</td>
                                     <td>Mar 11, 2023</td>
-                                    <td><span class="status-badge active">Active</span></td>
+                                    <!-- <td><span class="status-badge active">Active</span></td> -->
                                     <td>
                                         <button class="action-icon-btn" title="View">👁️</button>
                                         <button class="action-icon-btn" title="Edit">✏️</button>
@@ -476,6 +523,7 @@
 
                                 <!-- Employee 20 -->
                                 <tr data-employee-name="Amanda Lewis" data-employee-id="EMP-020" data-department="HR">
+                                    <td>20</td>
                                     <td>
                                         <div class="user-cell">
                                             <div class="user-avatar">AL</div>
@@ -487,7 +535,7 @@
                                     <td>HR</td>
                                     <td>Recruiter</td>
                                     <td>Jun 19, 2023</td>
-                                    <td><span class="status-badge active">Active</span></td>
+                                    <!-- <td><span class="status-badge active">Active</span></td> -->
                                     <td>
                                         <button class="action-icon-btn" title="View">👁️</button>
                                         <button class="action-icon-btn" title="Edit">✏️</button>
@@ -495,12 +543,14 @@
                                 </tr>
                             </tbody>
                         </table>
+                        </div>
                     </div>
 
                     <!-- Pagination -->
                     <div class="table-pagination">
                         <button class="pagination-btn" onclick="previousPageBiodata()">← Previous</button>
-                        <span class="pagination-info"><span class="current-page">1</span> / <span class="total-pages">1</span></span>
+                        <span class="pagination-info"><span class="current-page">1</span> / <span
+                                class="total-pages">1</span></span>
                         <button class="pagination-btn" onclick="nextPageBiodata()">Next →</button>
                     </div>
                 </div>
@@ -522,7 +572,7 @@
         function searchEmployeesTable() {
             const searchTerm = document.getElementById('searchEmployees').value.toLowerCase();
             const rows = document.querySelectorAll('#employeesTableBody tr');
-            
+
             rows.forEach(row => {
                 const name = row.dataset.employeeName.toLowerCase();
                 const id = row.dataset.employeeId.toLowerCase();
@@ -536,7 +586,7 @@
         function filterByDepartment() {
             const selectedDept = document.getElementById('departmentFilter').value;
             const rows = document.querySelectorAll('#employeesTableBody tr');
-            
+
             rows.forEach(row => {
                 const dept = row.dataset.department;
                 const matches = selectedDept === '' || dept === selectedDept;
@@ -582,23 +632,24 @@
         const dropdownMenu = document.querySelector('.dropdown-menu');
 
         if (profileDropdown) {
-            profileDropdown.addEventListener('click', function(e) {
+            profileDropdown.addEventListener('click', function (e) {
                 e.stopPropagation();
                 dropdownMenu.classList.toggle('show');
             });
         }
 
-        document.addEventListener('click', function() {
+        document.addEventListener('click', function () {
             if (dropdownMenu) {
                 dropdownMenu.classList.remove('show');
             }
         });
 
         // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             updatePaginationBiodata();
         });
     </script>
     <script src="./scripts.js"></script>
 </body>
+
 </html>
