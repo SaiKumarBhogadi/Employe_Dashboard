@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STACKLY - Employee Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dashboard-page">
+    <div class="dashboard-wrapper">
+        
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <!-- Logo Section -->
+            <div class="sidebar-logo">
+                <img src="./logo.png" alt="STACKLY Logo" class="sidebar-logo-image">
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="sidebar-menu">
+                <ul>
+                    <li>
+                        <a href="index.html" class="menu-item active" data-page="dashboard">
+                            <span class="menu-icon">📊</span>
+                            <span class="menu-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="biodata.html" class="menu-item" data-page="biodata">
+                            <span class="menu-icon">👤</span>
+                            <span class="menu-text">Employee Bio Data</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="training.html" class="menu-item" data-page="training">
+                            <span class="menu-icon">📚</span>
+                            <span class="menu-text">Training Details</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="project.html" class="menu-item" data-page="project">
+                            <span class="menu-icon">🎯</span>
+                            <span class="menu-text">Projects</span>
+                        </a>
+                    </li>
+                     <li>
+                        <a href="users_manager.html" class="menu-item" data-page="users">
+                            <span class="menu-icon">👥</span>
+                            <span class="menu-text">User Management</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            
+            <!-- Top Navigation Bar -->
+            <header class="top-navbar">
+                <div class="navbar-left">
+                      <h3> <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button></h3>
+                    <h3 class="page-title">Dashboard</h3>
+                </div>
+                
+                <div class="navbar-right">
+                    <!-- Profile Section -->
+                    <div class="profile-dropdown">
+                        <div class="profile-circle">
+                            <span class="profile-initial">SK</span>
+                        </div>
+                        <div class="profile-info">
+                            <p class="profile-name">Sai Kumar</p>
+                            <p class="profile-role">Employee</p>
+                        </div>
+                        <span class="dropdown-arrow">▼</span>
+                        
+                        <!-- Dropdown Menu -->
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item">View Profile</a>
+                            <a href="#" class="dropdown-item">Settings</a>
+                            <hr>
+                            <a href="login.html" class="dropdown-item logout">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <div class="content-area">
+                <div class="dashboard-cards">
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <h4>Total Employees</h4>
+                        <p class="stat-number">245</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📚</div>
+                        <h4>Active Training</h4>
+                        <p class="stat-number">12</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✓</div>
+                        <h4>Total Projects</h4>
+                        <p class="stat-number">487</p>
+                    </div>
+                    <!-- <div class="stat-card">
+                        <div class="stat-icon">⭐</div>
+                        <h4>Performance</h4>
+                        <p class="stat-number">4.8/5</p>
+                    </div> -->
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="content-card">
+                        <div class="card-header">
+                            <h3>Quick Links</h3>
+                        </div>
+                        <div class="quick-links">
+                            <a href="biodata.html" class="quick-link-item">
+                                <span class="quick-icon">👤</span>
+                                <span>Update Bio Data</span>
+                            </a>
+                            <a href="training.html" class="quick-link-item">
+                                <span class="quick-icon">📚</span>
+                                <span>View Training</span>
+                            </a>
+                            <a href="project.html" class="quick-link-item">
+                                <span class="quick-icon">🎯</span>
+                                <span>My Projects</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- <div class="content-card">
+                        <div class="card-header">
+                            <h3>Recent Activity</h3>
+                        </div>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <span class="activity-icon">✓</span>
+                                <div class="activity-text">
+                                    <p class="activity-title">Profile Updated</p>
+                                    <p class="activity-time">2 hours ago</p>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <span class="activity-icon">📚</span>
+                                <div class="activity-text">
+                                    <p class="activity-title">React Development - 65%</p>
+                                    <p class="activity-time">1 day ago</p>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <span class="activity-icon">🎯</span>
+                                <div class="activity-text">
+                                    <p class="activity-title">Project Milestone Achieved</p>
+                                    <p class="activity-time">3 days ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handle profile dropdown
+        const profileDropdown = document.querySelector('.profile-dropdown');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        profileDropdown.addEventListener('click', function(e) {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function() {
+            dropdownMenu.classList.remove('show');
+        });
+        
+        
+    </script>
+     <script src="./scripts.js"></script>
+</body>
+</html>
