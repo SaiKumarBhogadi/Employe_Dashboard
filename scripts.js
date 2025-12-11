@@ -12,7 +12,7 @@ function toggleSidebar() {
         sidebar.classList.toggle('collapsed');
     } 
     // For mobile/tablet (<= 768px) - show/hide sidebar
-    else {
+    else {``
         sidebar.classList.toggle('mobile-visible');
         toggleOverlay();
     }

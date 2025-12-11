@@ -11,44 +11,17 @@
         
         <!-- Left Sidebar -->
         <aside class="sidebar">
-            <!-- Logo Section -->
-           <div class="sidebar-logo">
+            <div class="sidebar-logo">
                 <img src="./logo.png" alt="STACKLY Logo" class="sidebar-logo-image">
             </div>
 
-            <!-- Navigation Menu -->
             <nav class="sidebar-menu">
                 <ul>
-                    <li>
-                        <a href="index.html" class="menu-item" data-page="dashboard">
-                            <span class="menu-icon">📊</span>
-                            <span class="menu-text">Dashboard</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="biodata.html" class="menu-item active" data-page="biodata">
-                            <span class="menu-icon">👤</span>
-                            <span class="menu-text">Employee Bio Data</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="training.html" class="menu-item" data-page="training">
-                            <span class="menu-icon">📚</span>
-                            <span class="menu-text">Training Details</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="project.html" class="menu-item" data-page="project">
-                            <span class="menu-icon">🎯</span>
-                            <span class="menu-text">Projects</span>
-                        </a>
-                    </li>
-                     <li>
-                        <a href="users_manager.html" class="menu-item " data-page="users">
-                            <span class="menu-icon">👥</span>
-                            <span class="menu-text">User Management</span>
-                        </a>
-                    </li>
+                    <li><a href="index.html" class="menu-item" data-page="dashboard"><span class="menu-icon">📊</span><span class="menu-text">Dashboard</span></a></li>
+                    <li><a href="biodata.html" class="menu-item active" data-page="biodata"><span class="menu-icon">👤</span><span class="menu-text">Employee Bio Data</span></a></li>
+                    <li><a href="training.html" class="menu-item" data-page="training"><span class="menu-icon">📚</span><span class="menu-text">Training Details</span></a></li>
+                    <li><a href="project.html" class="menu-item" data-page="project"><span class="menu-icon">🎯</span><span class="menu-text">Projects</span></a></li>
+                    <li><a href="users_manager.html" class="menu-item" data-page="users"><span class="menu-icon">👥</span><span class="menu-text">User Management</span></a></li>
                 </ul>
             </nav>
         </aside>
@@ -59,23 +32,18 @@
             <!-- Top Navigation Bar -->
             <header class="top-navbar">
                 <div class="navbar-left">
-                      <h3> <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button></h3>
+                    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
                     <h3 class="page-title">Employee Bio Data</h3>
                 </div>
                 
                 <div class="navbar-right">
-                    <!-- Profile Section -->
                     <div class="profile-dropdown">
-                        <div class="profile-circle">
-                            <span class="profile-initial">JD</span>
-                        </div>
+                        <div class="profile-circle"><span class="profile-initial">JD</span></div>
                         <div class="profile-info">
                             <p class="profile-name">John Doe</p>
                             <p class="profile-role">Employee</p>
                         </div>
                         <span class="dropdown-arrow">▼</span>
-                        
-                        <!-- Dropdown Menu -->
                         <div class="dropdown-menu">
                             <a href="#" class="dropdown-item">View Profile</a>
                             <a href="#" class="dropdown-item">Settings</a>
@@ -88,159 +56,549 @@
 
             <!-- Page Content -->
             <div class="content-area">
+
+                <!-- Employees List Section -->
                 <div class="content-card">
                     <div class="card-header">
-                        <h2>Employee Bio Data</h2>
-                        <p class="card-subtitle">Update your personal information</p>
+                        <h2>All Employees</h2>
+                        <p class="card-subtitle">View and manage all employee information</p>
                     </div>
 
-                    <form class="biodata-form">
-                        <!-- Personal Information Section -->
-                        <div class="form-section">
-                            <h3 class="section-title">Personal Information</h3>
-                            
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="firstName">First Name *</label>
-                                    <input type="text" id="firstName" name="firstName" value="John" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="lastName">Last Name *</label>
-                                    <input type="text" id="lastName" name="lastName" value="Doe" required>
-                                </div>
-                            </div>
+                    <!-- Search and Filters -->
+                    <div class="list-controls">
+                        <input type="text" id="searchEmployees" placeholder="Search by name, email, or ID..." class="search-input" onkeyup="searchEmployeesTable()">
+                        <select id="departmentFilter" class="role-filter" onchange="filterByDepartment()">
+                            <option value="">All Departments</option>
+                            <option value="Software Development">Software Development</option>
+                            <option value="HR">HR</option>
+                            <option value="Finance">Finance</option>
+                            <option value="Operations">Operations</option>
+                            <option value="Training">Training & Development</option>
+                        </select>
+                        <a href="add_employee.html" class="btn btn-primary" style="text-decoration: none;">+ Add Employee</a>
+                    </div>
 
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="email">Email Address *</label>
-                                    <input type="email" id="email" name="email" value="john.doe@stackly.com" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="phone">Phone Number</label>
-                                    <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
-                                </div>
-                            </div>
+                    <!-- Employees Table -->
+                    <div class="table-container">
+                        <table class="employees-biodata-table">
+                            <thead>
+                                <tr>
+                                    <th>Employee Name</th>
+                                    <th>Employee ID</th>
+                                    <th>Email</th>
+                                    <th>Department</th>
+                                    <th>Position</th>
+                                    <th>Joining Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="employeesTableBody">
+                                <!-- Employee 1 -->
+                                <tr data-employee-name="John Doe" data-employee-id="EMP-001" data-department="Software Development">
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar">JD</div>
+                                            <span>John Doe</span>
+                                        </div>
+                                    </td>
+                                    <td>EMP-001</td>
+                                    <td>john.doe@stackly.com</td>
+                                    <td>Software Development</td>
+                                    <td>Senior Developer</td>
+                                    <td>Jan 15, 2022</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="action-icon-btn" title="View">👁️</button>
+                                        <button class="action-icon-btn" title="Edit">✏️</button>
+                                    </td>
+                                </tr>
 
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="dob">Date of Birth</label>
-                                    <input type="date" id="dob" name="dob">
-                                </div>
-                                <div class="form-group">
-                                    <label for="gender">Gender</label>
-                                    <select id="gender" name="gender">
-                                        <option>Select</option>
-                                        <option selected>Male</option>
-                                        <option>Female</option>
-                                        <option>Other</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+                                <!-- Employee 2 -->
+                                <tr data-employee-name="Sarah Miller" data-employee-id="EMP-002" data-department="Software Development">
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar">SM</div>
+                                            <span>Sarah Miller</span>
+                                        </div>
+                                    </td>
+                                    <td>EMP-002</td>
+                                    <td>sarah.miller@stackly.com</td>
+                                    <td>Software Development</td>
+                                    <td>Scrum Master</td>
+                                    <td>Mar 20, 2021</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="action-icon-btn" title="View">👁️</button>
+                                        <button class="action-icon-btn" title="Edit">✏️</button>
+                                    </td>
+                                </tr>
 
-                        <!-- Employment Information Section -->
-                        <div class="form-section">
-                            <h3 class="section-title">Employment Information</h3>
-                            
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="empId">Employee ID *</label>
-                                    <input type="text" id="empId" name="empId" value="STK-2024-001" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label for="department">Department *</label>
-                                    <select id="department" name="department" required>
-                                        <option>Select Department</option>
-                                        <option selected>Software Development</option>
-                                        <option>HR</option>
-                                        <option>Finance</option>
-                                        <option>Operations</option>
-                                    </select>
-                                </div>
-                            </div>
+                                <!-- Employee 3 -->
+                                <tr data-employee-name="Mike Johnson" data-employee-id="EMP-003" data-department="Software Development">
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar">MJ</div>
+                                            <span>Mike Johnson</span>
+                                        </div>
+                                    </td>
+                                    <td>EMP-003</td>
+                                    <td>mike.johnson@stackly.com</td>
+                                    <td>Software Development</td>
+                                    <td>QA Engineer</td>
+                                    <td>Jun 10, 2022</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="action-icon-btn" title="View">👁️</button>
+                                        <button class="action-icon-btn" title="Edit">✏️</button>
+                                    </td>
+                                </tr>
 
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="position">Position *</label>
-                                    <input type="text" id="position" name="position" value="Senior Developer" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="joinDate">Joining Date *</label>
-                                    <input type="date" id="joinDate" name="joinDate" value="2022-01-15" required>
-                                </div>
-                            </div>
+                                <!-- Employee 4 -->
+                                <tr data-employee-name="Emma Wilson" data-employee-id="EMP-004" data-department="HR">
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar">EW</div>
+                                            <span>Emma Wilson</span>
+                                        </div>
+                                    </td>
+                                    <td>EMP-004</td>
+                                    <td>emma.wilson@stackly.com</td>
+                                    <td>HR</td>
+                                    <td>HR Manager</td>
+                                    <td>Feb 01, 2023</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="action-icon-btn" title="View">👁️</button>
+                                        <button class="action-icon-btn" title="Edit">✏️</button>
+                                    </td>
+                                </tr>
 
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="manager">Reporting Manager</label>
-                                    <input type="text" id="manager" name="manager" value="Sarah Smith" placeholder="Your manager's name">
-                                </div>
-                            </div>
-                        </div>
+                                <!-- Employee 5 -->
+                                <tr data-employee-name="Alex Chen" data-employee-id="EMP-005" data-department="Software Development">
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar">AC</div>
+                                            <span>Alex Chen</span>
+                                        </div>
+                                    </td>
+                                    <td>EMP-005</td>
+                                    <td>alex.chen@stackly.com</td>
+                                    <td>Software Development</td>
+                                    <td>Junior Developer</td>
+                                    <td>Aug 15, 2023</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="action-icon-btn" title="View">👁️</button>
+                                        <button class="action-icon-btn" title="Edit">✏️</button>
+                                    </td>
+                                </tr>
 
-                        <!-- Address Section -->
-                        <div class="form-section">
-                            <h3 class="section-title">Address</h3>
-                            
-                            <div class="form-row">
-                                <div class="form-group full-width">
-                                    <label for="address">Street Address</label>
-                                    <input type="text" id="address" name="address" placeholder="123 Main Street">
-                                </div>
-                            </div>
+                                <!-- Employee 6 -->
+                                <tr data-employee-name="Lisa Park" data-employee-id="EMP-006" data-department="Finance">
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar">LP</div>
+                                            <span>Lisa Park</span>
+                                        </div>
+                                    </td>
+                                    <td>EMP-006</td>
+                                    <td>lisa.park@stackly.com</td>
+                                    <td>Finance</td>
+                                    <td>Finance Analyst</td>
+                                    <td>May 10, 2022</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="action-icon-btn" title="View">👁️</button>
+                                        <button class="action-icon-btn" title="Edit">✏️</button>
+                                    </td>
+                                </tr>
 
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="city">City</label>
-                                    <input type="text" id="city" name="city" placeholder="New York">
-                                </div>
-                                <div class="form-group">
-                                    <label for="state">State</label>
-                                    <input type="text" id="state" name="state" placeholder="NY">
-                                </div>
-                                <div class="form-group">
-                                    <label for="zip">ZIP Code</label>
-                                    <input type="text" id="zip" name="zip" placeholder="10001">
-                                </div>
-                            </div>
-                        </div>
+                                <!-- Employee 7 -->
+                                <tr data-employee-name="Rachel Green" data-employee-id="EMP-007" data-department="Operations">
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar">RG</div>
+                                            <span>Rachel Green</span>
+                                        </div>
+                                    </td>
+                                    <td>EMP-007</td>
+                                    <td>rachel.green@stackly.com</td>
+                                    <td>Operations</td>
+                                    <td>Operations Manager</td>
+                                    <td>Sep 05, 2021</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="action-icon-btn" title="View">👁️</button>
+                                        <button class="action-icon-btn" title="Edit">✏️</button>
+                                    </td>
+                                </tr>
 
-                        <!-- Form Actions -->
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-primary">Save Changes</button>
-                            <button type="reset" class="btn btn-secondary">Reset</button>
-                        </div>
-                    </form>
+                                <!-- Employee 8 -->
+                                <tr data-employee-name="Tom Brady" data-employee-id="EMP-008" data-department="Software Development">
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar">TB</div>
+                                            <span>Tom Brady</span>
+                                        </div>
+                                    </td>
+                                    <td>EMP-008</td>
+                                    <td>tom.brady@stackly.com</td>
+                                    <td>Software Development</td>
+                                    <td>Backend Developer</td>
+                                    <td>Nov 20, 2022</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="action-icon-btn" title="View">👁️</button>
+                                        <button class="action-icon-btn" title="Edit">✏️</button>
+                                    </td>
+                                </tr>
+
+                                <!-- Employee 9 -->
+                                <tr data-employee-name="Nina Patel" data-employee-id="EMP-009" data-department="Training">
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar">NP</div>
+                                            <span>Nina Patel</span>
+                                        </div>
+                                    </td>
+                                    <td>EMP-009</td>
+                                    <td>nina.patel@stackly.com</td>
+                                    <td>Training & Development</td>
+                                    <td>Training Coordinator</td>
+                                    <td>Dec 12, 2023</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="action-icon-btn" title="View">👁️</button>
+                                        <button class="action-icon-btn" title="Edit">✏️</button>
+                                    </td>
+                                </tr>
+
+                                <!-- Employee 10 -->
+                                <tr data-employee-name="Chris Lee" data-employee-id="EMP-010" data-department="Software Development">
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar">CL</div>
+                                            <span>Chris Lee</span>
+                                        </div>
+                                    </td>
+                                    <td>EMP-010</td>
+                                    <td>chris.lee@stackly.com</td>
+                                    <td>Software Development</td>
+                                    <td>DevOps Engineer</td>
+                                    <td>Jul 08, 2023</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="action-icon-btn" title="View">👁️</button>
+                                        <button class="action-icon-btn" title="Edit">✏️</button>
+                                    </td>
+                                </tr>
+
+                                <!-- Employee 11 -->
+                                <tr data-employee-name="David Kumar" data-employee-id="EMP-011" data-department="Finance">
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar">DK</div>
+                                            <span>David Kumar</span>
+                                        </div>
+                                    </td>
+                                    <td>EMP-011</td>
+                                    <td>david.kumar@stackly.com</td>
+                                    <td>Finance</td>
+                                    <td>Finance Manager</td>
+                                    <td>Apr 18, 2020</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="action-icon-btn" title="View">👁️</button>
+                                        <button class="action-icon-btn" title="Edit">✏️</button>
+                                    </td>
+                                </tr>
+
+                                <!-- Employee 12 -->
+                                <tr data-employee-name="Emily Brown" data-employee-id="EMP-012" data-department="HR">
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar">EB</div>
+                                            <span>Emily Brown</span>
+                                        </div>
+                                    </td>
+                                    <td>EMP-012</td>
+                                    <td>emily.brown@stackly.com</td>
+                                    <td>HR</td>
+                                    <td>HR Specialist</td>
+                                    <td>Oct 03, 2022</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="action-icon-btn" title="View">👁️</button>
+                                        <button class="action-icon-btn" title="Edit">✏️</button>
+                                    </td>
+                                </tr>
+
+                                <!-- Employee 13 -->
+                                <tr data-employee-name="Michael Wilson" data-employee-id="EMP-013" data-department="Operations">
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar">MW</div>
+                                            <span>Michael Wilson</span>
+                                        </div>
+                                    </td>
+                                    <td>EMP-013</td>
+                                    <td>michael.wilson@stackly.com</td>
+                                    <td>Operations</td>
+                                    <td>Operations Specialist</td>
+                                    <td>Jan 25, 2023</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="action-icon-btn" title="View">👁️</button>
+                                        <button class="action-icon-btn" title="Edit">✏️</button>
+                                    </td>
+                                </tr>
+
+                                <!-- Employee 14 -->
+                                <tr data-employee-name="Sophie Turner" data-employee-id="EMP-014" data-department="Software Development">
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar">ST</div>
+                                            <span>Sophie Turner</span>
+                                        </div>
+                                    </td>
+                                    <td>EMP-014</td>
+                                    <td>sophie.turner@stackly.com</td>
+                                    <td>Software Development</td>
+                                    <td>Frontend Developer</td>
+                                    <td>Feb 14, 2023</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="action-icon-btn" title="View">👁️</button>
+                                        <button class="action-icon-btn" title="Edit">✏️</button>
+                                    </td>
+                                </tr>
+
+                                <!-- Employee 15 -->
+                                <tr data-employee-name="James Anderson" data-employee-id="EMP-015" data-department="Software Development">
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar">JA</div>
+                                            <span>James Anderson</span>
+                                        </div>
+                                    </td>
+                                    <td>EMP-015</td>
+                                    <td>james.anderson@stackly.com</td>
+                                    <td>Software Development</td>
+                                    <td>Backend Developer</td>
+                                    <td>May 22, 2023</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="action-icon-btn" title="View">👁️</button>
+                                        <button class="action-icon-btn" title="Edit">✏️</button>
+                                    </td>
+                                </tr>
+
+                                <!-- Employee 16 -->
+                                <tr data-employee-name="Olivia Martinez" data-employee-id="EMP-016" data-department="Finance">
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar">OM</div>
+                                            <span>Olivia Martinez</span>
+                                        </div>
+                                    </td>
+                                    <td>EMP-016</td>
+                                    <td>olivia.martinez@stackly.com</td>
+                                    <td>Finance</td>
+                                    <td>Accountant</td>
+                                    <td>Aug 30, 2022</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="action-icon-btn" title="View">👁️</button>
+                                        <button class="action-icon-btn" title="Edit">✏️</button>
+                                    </td>
+                                </tr>
+
+                                <!-- Employee 17 -->
+                                <tr data-employee-name="Kevin White" data-employee-id="EMP-017" data-department="Operations">
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar">KW</div>
+                                            <span>Kevin White</span>
+                                        </div>
+                                    </td>
+                                    <td>EMP-017</td>
+                                    <td>kevin.white@stackly.com</td>
+                                    <td>Operations</td>
+                                    <td>Logistics Coordinator</td>
+                                    <td>Sep 12, 2023</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="action-icon-btn" title="View">👁️</button>
+                                        <button class="action-icon-btn" title="Edit">✏️</button>
+                                    </td>
+                                </tr>
+
+                                <!-- Employee 18 -->
+                                <tr data-employee-name="Jessica Taylor" data-employee-id="EMP-018" data-department="Training">
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar">JT</div>
+                                            <span>Jessica Taylor</span>
+                                        </div>
+                                    </td>
+                                    <td>EMP-018</td>
+                                    <td>jessica.taylor@stackly.com</td>
+                                    <td>Training & Development</td>
+                                    <td>Training Manager</td>
+                                    <td>Nov 09, 2021</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="action-icon-btn" title="View">👁️</button>
+                                        <button class="action-icon-btn" title="Edit">✏️</button>
+                                    </td>
+                                </tr>
+
+                                <!-- Employee 19 -->
+                                <tr data-employee-name="Daniel Garcia" data-employee-id="EMP-019" data-department="Software Development">
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar">DG</div>
+                                            <span>Daniel Garcia</span>
+                                        </div>
+                                    </td>
+                                    <td>EMP-019</td>
+                                    <td>daniel.garcia@stackly.com</td>
+                                    <td>Software Development</td>
+                                    <td>Full Stack Developer</td>
+                                    <td>Mar 11, 2023</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="action-icon-btn" title="View">👁️</button>
+                                        <button class="action-icon-btn" title="Edit">✏️</button>
+                                    </td>
+                                </tr>
+
+                                <!-- Employee 20 -->
+                                <tr data-employee-name="Amanda Lewis" data-employee-id="EMP-020" data-department="HR">
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar">AL</div>
+                                            <span>Amanda Lewis</span>
+                                        </div>
+                                    </td>
+                                    <td>EMP-020</td>
+                                    <td>amanda.lewis@stackly.com</td>
+                                    <td>HR</td>
+                                    <td>Recruiter</td>
+                                    <td>Jun 19, 2023</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <button class="action-icon-btn" title="View">👁️</button>
+                                        <button class="action-icon-btn" title="Edit">✏️</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="table-pagination">
+                        <button class="pagination-btn" onclick="previousPageBiodata()">← Previous</button>
+                        <span class="pagination-info"><span class="current-page">1</span> / <span class="total-pages">1</span></span>
+                        <button class="pagination-btn" onclick="nextPageBiodata()">Next →</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Handle profile dropdown
-        const profileDropdown = document.querySelector('.profile-dropdown');
-        const dropdownMenu = document.querySelector('.dropdown-menu');
+        // ============================================================
+        // UI INTERACTION ONLY - NO BACKEND LOGIC
+        // ============================================================
 
-        profileDropdown.addEventListener('click', function(e) {
-            e.stopPropagation();
-            dropdownMenu.classList.toggle('show');
-        });
+        const pageData = {
+            currentPage: 1,
+            perPage: 20
+        };
 
-        document.addEventListener('click', function() {
-            dropdownMenu.classList.remove('show');
-        });
-
-        // Handle bio data form submission
-        const biodataForm = document.querySelector('.biodata-form');
-        if (biodataForm) {
-            biodataForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Bio data saved successfully!');
+        // Search employees (UI only)
+        function searchEmployeesTable() {
+            const searchTerm = document.getElementById('searchEmployees').value.toLowerCase();
+            const rows = document.querySelectorAll('#employeesTableBody tr');
+            
+            rows.forEach(row => {
+                const name = row.dataset.employeeName.toLowerCase();
+                const id = row.dataset.employeeId.toLowerCase();
+                const email = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+                const matches = name.includes(searchTerm) || id.includes(searchTerm) || email.includes(searchTerm);
+                row.style.display = matches ? '' : 'none';
             });
         }
 
-        
+        // Filter by department (UI only)
+        function filterByDepartment() {
+            const selectedDept = document.getElementById('departmentFilter').value;
+            const rows = document.querySelectorAll('#employeesTableBody tr');
+            
+            rows.forEach(row => {
+                const dept = row.dataset.department;
+                const matches = selectedDept === '' || dept === selectedDept;
+                row.style.display = matches ? '' : 'none';
+            });
+        }
+
+        // Update pagination (UI only)
+        function updatePaginationBiodata() {
+            const visibleRows = Array.from(document.querySelectorAll('#employeesTableBody tr'))
+                .filter(row => row.style.display !== 'none');
+            const totalPages = Math.ceil(visibleRows.length / pageData.perPage);
+            const start = (pageData.currentPage - 1) * pageData.perPage;
+            const end = start + pageData.perPage;
+
+            visibleRows.forEach((row, index) => {
+                row.style.display = (index >= start && index < end) ? '' : 'none';
+            });
+
+            document.querySelector('.current-page').textContent = pageData.currentPage;
+            document.querySelector('.total-pages').textContent = totalPages || 1;
+        }
+
+        function nextPageBiodata() {
+            const visibleRows = Array.from(document.querySelectorAll('#employeesTableBody tr'))
+                .filter(row => row.style.display !== 'none');
+            const totalPages = Math.ceil(visibleRows.length / pageData.perPage);
+            if (pageData.currentPage < totalPages) {
+                pageData.currentPage++;
+                updatePaginationBiodata();
+            }
+        }
+
+        function previousPageBiodata() {
+            if (pageData.currentPage > 1) {
+                pageData.currentPage--;
+                updatePaginationBiodata();
+            }
+        }
+
+        // Profile dropdown (UI only)
+        const profileDropdown = document.querySelector('.profile-dropdown');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        if (profileDropdown) {
+            profileDropdown.addEventListener('click', function(e) {
+                e.stopPropagation();
+                dropdownMenu.classList.toggle('show');
+            });
+        }
+
+        document.addEventListener('click', function() {
+            if (dropdownMenu) {
+                dropdownMenu.classList.remove('show');
+            }
+        });
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updatePaginationBiodata();
+        });
     </script>
-     <script src="./scripts.js"></script>
+    <script src="./scripts.js"></script>
 </body>
 </html>

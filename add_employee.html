@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STACKLY - Add Employee</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dashboard-page">
+    <div class="dashboard-wrapper">
+        
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <img src="./logo.png" alt="STACKLY Logo" class="sidebar-logo-image">
+            </div>
+
+            <nav class="sidebar-menu">
+                <ul>
+                    <li><a href="index.html" class="menu-item" data-page="dashboard"><span class="menu-icon">📊</span><span class="menu-text">Dashboard</span></a></li>
+                    <li><a href="biodata.html" class="menu-item active" data-page="biodata"><span class="menu-icon">👤</span><span class="menu-text">Employee Bio Data</span></a></li>
+                    <li><a href="training.html" class="menu-item" data-page="training"><span class="menu-icon">📚</span><span class="menu-text">Training Details</span></a></li>
+                    <li><a href="project.html" class="menu-item" data-page="project"><span class="menu-icon">🎯</span><span class="menu-text">Projects</span></a></li>
+                    <li><a href="users_manager.html" class="menu-item" data-page="users"><span class="menu-icon">👥</span><span class="menu-text">User Management</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            
+            <!-- Top Navigation Bar -->
+            <header class="top-navbar">
+                <div class="navbar-left">
+                    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+                    <h3 class="page-title">Add Employee</h3>
+                </div>
+                
+                <div class="navbar-right">
+                    <div class="profile-dropdown">
+                        <div class="profile-circle"><span class="profile-initial">JD</span></div>
+                        <div class="profile-info">
+                            <p class="profile-name">John Doe</p>
+                            <p class="profile-role">Employee</p>
+                        </div>
+                        <span class="dropdown-arrow">▼</span>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item">View Profile</a>
+                            <a href="#" class="dropdown-item">Settings</a>
+                            <hr>
+                            <a href="login.html" class="dropdown-item logout">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <div class="content-area">
+                <div class="content-card" style="max-width: 900px;">
+                    <div class="card-header">
+                        <h2>Add New Employee</h2>
+                        <p class="card-subtitle">Fill in the employee information below</p>
+                    </div>
+
+                    <form class="biodata-form" method="POST" action="/api/employees/create/">
+                        
+                        <!-- Personal Information Section -->
+                        <div class="form-section">
+                            <h3 class="section-title">Personal Information</h3>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">First Name *</label>
+                                    <input type="text" id="firstName" name="first_name" placeholder="Enter first name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name *</label>
+                                    <input type="text" id="lastName" name="last_name" placeholder="Enter last name" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email Address *</label>
+                                    <input type="email" id="email" name="email" placeholder="employee@stackly.com" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="dob">Date of Birth</label>
+                                    <input type="date" id="dob" name="dob">
+                                </div>
+                                <div class="form-group">
+                                    <label for="gender">Gender</label>
+                                    <select id="gender" name="gender">
+                                        <option value="">Select</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Employment Information Section -->
+                        <div class="form-section">
+                            <h3 class="section-title">Employment Information</h3>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="department">Department *</label>
+                                    <select id="department" name="department" required>
+                                        <option value="">Select Department</option>
+                                        <option value="Software Development">Software Development</option>
+                                        <option value="HR">HR</option>
+                                        <option value="Finance">Finance</option>
+                                        <option value="Operations">Operations</option>
+                                        <option value="Training & Development">Training & Development</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="position">Position *</label>
+                                    <input type="text" id="position" name="position" placeholder="e.g., Senior Developer" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="joinDate">Joining Date *</label>
+                                    <input type="date" id="joinDate" name="joining_date" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="manager">Reporting Manager</label>
+                                    <input type="text" id="manager" name="manager" placeholder="Manager's name">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Address Section -->
+                        <div class="form-section">
+                            <h3 class="section-title">Address</h3>
+                            
+                            <div class="form-row">
+                                <div class="form-group full-width">
+                                    <label for="address">Street Address</label>
+                                    <input type="text" id="address" name="address" placeholder="123 Main Street">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <input type="text" id="city" name="city" placeholder="New York">
+                                </div>
+                                <div class="form-group">
+                                    <label for="state">State</label>
+                                    <input type="text" id="state" name="state" placeholder="NY">
+                                </div>
+                                <div class="form-group">
+                                    <label for="zip">ZIP Code</label>
+                                    <input type="text" id="zip" name="zip" placeholder="10001">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form Actions -->
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Create Employee</button>
+                            <a href="biodata.html" class="btn btn-secondary" style="text-decoration: none; text-align: center;">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Profile dropdown (UI only)
+        const profileDropdown = document.querySelector('.profile-dropdown');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        if (profileDropdown) {
+            profileDropdown.addEventListener('click', function(e) {
+                e.stopPropagation();
+                dropdownMenu.classList.toggle('show');
+            });
+        }
+
+        document.addEventListener('click', function() {
+            if (dropdownMenu) {
+                dropdownMenu.classList.remove('show');
+            }
+        });
+    </script>
+    <script src="./scripts.js"></script>
+</body>
+</html>
