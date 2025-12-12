@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pending Bio Data Requests - STACKLY</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dashboard-page">
+    <div class="dashboard-wrapper">
+        
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <img src="./logo.png" alt="STACKLY Logo" class="sidebar-logo-image">
+            </div>
+            <nav class="sidebar-menu">
+                <ul>
+                     <li><a href="index.html" class="menu-item" data-page="dashboard"><span class="menu-icon">📊</span><span class="menu-text">Dashboard</span></a></li>
+                    <li><a href="biodata.html" class="menu-item" data-page="biodata"><span class="menu-icon">👤</span><span class="menu-text">Employee Bio Data</span></a></li>
+                    <li><a href="training.html" class="menu-item" data-page="training"><span class="menu-icon">📚</span><span class="menu-text">Training Details</span></a></li>
+                    <li><a href="project.html" class="menu-item active" data-page="project"><span class="menu-icon">🎯</span><span class="menu-text">Projects</span></a></li>
+                    <li><a href="users_manager.html" class="menu-item" data-page="users"><span class="menu-icon">👥</span><span class="menu-text">User Management</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header class="top-navbar">
+                <div class="navbar-left">
+                    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+                    <h3 class="page-title">Pending Bio Data Requests</h3>
+                </div>
+                <div class="navbar-right">
+                    <div class="profile-dropdown">
+                        <div class="profile-circle"><span class="profile-initial">HR</span></div>
+                        <div class="profile-info">
+                            <p class="profile-name">HR Manager</p>
+                            <p class="profile-role">Admin</p>
+                        </div>
+                        <span class="dropdown-arrow">▼</span>
+                        <div class="dropdown-menu">
+                            <a href="profile.html" class="dropdown-item">View Profile</a>
+                            <a href="settings.html" class="dropdown-item">Settings</a>
+                            <hr>
+                            <a href="login.html" class="dropdown-item logout">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-area">
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2>Public Bio Data Submissions</h2>
+                        <p class="card-subtitle">Review and approve/reject employee applications submitted via public form</p>
+                    </div>
+
+                    <div class="list-controls">
+                        <input type="text" id="searchRequests" placeholder="Search by name, email or phone..." class="search-input" onkeyup="searchRequests()">
+                        <select id="statusFilter" class="role-filter" onchange="filterRequests()">
+                            <option value="">All Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="approved">Approved</option>
+                            <option value="rejected">Rejected</option>
+                        </select>
+                    </div>
+
+                    <div class="table-container">
+                        <div class="table-wrapper">
+                            <table class="employees-biodata-table">
+                                <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th>Applicant Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Submitted On</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="requestsTableBody">
+                                    <tr data-name="Priya Sharma" data-email="priya.sharma@gmail.com" data-status="pending">
+                                        <td>1</td>
+                                        <td><div class="user-cell"><div class="user-avatar">PS</div><span>Priya Sharma</span></div></td>
+                                        <td>priya.sharma@gmail.com</td>
+                                        <td>+91 98765 43210</td>
+                                        <td>10 Dec 2025</td>
+                                        <td><span class="status-badge pending">Pending</span></td>
+                                        <td>
+                                            <a href="review_request.html?id=101" class="action-icon-btn" title="Review">Eye</a>
+                                        </td>
+                                    </tr>
+                                    <tr data-name="Rahul Verma" data-email="rahul.v@gmail.com" data-status="pending">
+                                        <td>2</td>
+                                        <td><div class="user-cell"><div class="user-avatar">RV</div><span>Rahul Verma</span></div></td>
+                                        <td>rahul.v@gmail.com</td>
+                                        <td>+91 87654 32109</td>
+                                        <td>09 Dec 2025</td>
+                                        <td><span class="status-badge pending">Pending</span></td>
+                                        <td><a href="review_request.html?id=102" class="action-icon-btn" title="Review">Eye</a></td>
+                                    </tr>
+                                    <tr data-name="Anita Desai" data-email="anita.d@hotmail.com" data-status="approved">
+                                        <td>3</td>
+                                        <td><div class="user-cell"><div class="user-avatar">AD</div><span>Anita Desai</span></div></td>
+                                        <td>anita.d@hotmail.com</td>
+                                        <td>+91 76543 21098</td>
+                                        <td>08 Dec 2025</td>
+                                        <td><span class="status-badge completed">Approved</span></td>
+                                        <td><a href="review_request.html?id=103" class="action-icon-btn" title="View">Eye</a></td>
+                                    </tr>
+                                    <tr data-name="Vikram Singh" data-email="vikram.singh@outlook.com" data-status="rejected">
+                                        <td>4</td>
+                                        <td><div class="user-cell"><div class="user-avatar">VS</div><span>Vikram Singh</span></div></td>
+                                        <td>vikram.singh@outlook.com</td>
+                                        <td>+91 65432 10987</td>
+                                        <td>07 Dec 2025</td>
+                                        <td><span class="status-badge danger">Rejected</span></td>
+                                        <td><a href="review_request.html?id=104" class="action-icon-btn" title="View">Eye</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="table-pagination">
+                        <button class="pagination-btn" onclick="prevPage()">Previous</button>
+                        <span class="pagination-info"><span class="current-page">1</span> / <span class="total-pages">1</span></span>
+                        <button class="pagination-btn" onclick="nextPage()">Next</button>
+                    </div>
+
+                    <div class="export-buttons" style="margin-top: 25px; text-align: right;">
+                        <button class="btn btn-excel">Export Excel</button>
+                        <button class="btn btn-pdf">Export PDF</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./scripts.js"></script>
+    <script>
+        // Simple client-side search & filter
+        function searchRequests() {
+            const term = document.getElementById('searchRequests').value.toLowerCase();
+            const rows = document.querySelectorAll('#requestsTableBody tr');
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(term) ? '' : 'none';
+            });
+        }
+
+        function filterRequests() {
+            const status = document.getElementById('statusFilter').value;
+            const rows = document.querySelectorAll('#requestsTableBody tr');
+            rows.forEach(row => {
+                const rowStatus = row.dataset.status;
+                row.style.display = (status === '' || rowStatus === status) ? '' : 'none';
+            });
+        }
+
+        // Profile dropdown
+        const profileDropdown = document.querySelector('.profile-dropdown');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+        profileDropdown.addEventListener('click', e => { e.stopPropagation(); dropdownMenu.classList.toggle('show'); });
+        document.addEventListener('click', () => dropdownMenu.classList.remove('show'));
+    </script>
+</body>
+</html>
