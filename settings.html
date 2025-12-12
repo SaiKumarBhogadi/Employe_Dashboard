@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Settings — Employee Dashboard</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="dashboard-wrapper">
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <img src="./logo.png" alt="STACKLY Logo" class="sidebar-logo-image">
+      </div>
+      <nav class="sidebar-menu">
+        <ul>
+          <li><a href="index.html" class="menu-item" data-page="dashboard"><span class="menu-icon">📊</span><span class="menu-text">Dashboard</span></a></li>
+          <li><a href="biodata.html" class="menu-item" data-page="biodata"><span class="menu-icon">👤</span><span class="menu-text">Employee Bio Data</span></a></li>
+          <li><a href="training.html" class="menu-item" data-page="training"><span class="menu-icon">📚</span><span class="menu-text">Training Details</span></a></li>
+          <li><a href="project.html" class="menu-item" data-page="project"><span class="menu-icon">🎯</span><span class="menu-text">Projects</span></a></li>
+          <li><a href="users_manager.html" class="menu-item" data-page="users"><span class="menu-icon">👥</span><span class="menu-text">User Management</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="main-content">
+      <header class="top-navbar">
+        <div class="navbar-left">
+          <h3><button class="sidebar-toggle" onclick="toggleSidebar()">☰</button></h3>
+          <h3 class="page-title">Settings</h3>
+        </div>
+        <div class="navbar-right">
+          <div class="profile-dropdown">
+            <div class="profile-circle"><span class="profile-initial">A</span></div>
+            <div class="profile-info"><p class="profile-name">Sai Kumar</p><p class="profile-role">Employee</p></div>
+            <span class="dropdown-arrow">▼</span>
+            <div class="dropdown-menu">
+                <a href="profile.html" class="dropdown-item">View Profile</a>
+                <a href="settings.html" class="dropdown-item">Settings</a>
+              <hr>
+              <a href="login.html" class="dropdown-item logout">Logout</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="content-area">
+        <div class="settings-grid">
+          <div class="settings-card">
+            <h2>Account</h2>
+            <form id="changePasswordForm" method="POST" action="/api/settings/change_password/">
+              <!-- In Django templates include {% csrf_token %} -->
+              <label>Current password</label>
+              <input type="password" name="current_password" required>
+              <label>New password</label>
+              <input type="password" name="new_password" required>
+              <label>Confirm new password</label>
+              <input type="password" name="confirm_password" required>
+              <div class="form-actions">
+                <button type="submit" class="btn primary">Change password</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="settings-card">
+            <h2>Preferences</h2>
+            <form id="preferencesForm" method="POST" action="/api/settings/update/">
+              <!-- In Django templates include {% csrf_token %} -->
+              <label>Receive email notifications</label>
+              <select name="email_notifications">
+                <option value="enabled">Enabled</option>
+                <option value="disabled">Disabled</option>
+              </select>
+
+              <label>Time zone</label>
+              <select name="timezone">
+                <option>UTC</option>
+                <option>Asia/Kolkata</option>
+                <option>America/New_York</option>
+              </select>
+
+                <!-- <label>Default dashboard view</label>
+                <select name="default_view">
+                <option value="overview">Overview</option>
+                <option value="projects">Projects</option>
+                <option value="training">Training</option>
+              </select> -->
+
+              <div class="form-actions">
+                <button type="submit" class="btn primary">Save preferences</button>
+                <button type="button" id="resetPrefs" class="btn">Reset</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="settings-card">
+            <h2>Privacy & Sessions</h2>
+            <p>Manage active sessions, connected apps and privacy settings.</p>
+            <button class="btn" id="viewSessions">View active sessions</button>
+            <button class="btn danger" id="signOutAll">Sign out all devices</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="./scripts.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      const profileDropdown = document.querySelector('.profile-dropdown');
+      const dropdownMenu = profileDropdown.querySelector('.dropdown-menu');
+      profileDropdown.addEventListener('click', function(e){ e.stopPropagation(); dropdownMenu.classList.toggle('show'); });
+      document.addEventListener('click', function(){ dropdownMenu.classList.remove('show'); });
+
+      document.getElementById('resetPrefs').addEventListener('click', function(){ document.getElementById('preferencesForm').reset(); });
+
+      document.getElementById('signOutAll').addEventListener('click', function(){
+        if(confirm('Sign out from all devices?')){
+          // UI-only: backend sign-out will be implemented in Django.
+          // Replace this alert with a server-side POST (form) when wiring up.
+          alert('Sign out confirmed. Server will handle the request.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

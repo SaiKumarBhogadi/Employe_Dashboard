@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Profile — Employee Dashboard</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="dashboard-wrapper">
+
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <img src="./logo.png" class="sidebar-logo-image" alt="STACKLY Logo">
+      </div>
+      <nav class="sidebar-menu">
+        <ul>
+          <li><a href="index.html" class="menu-item"><span class="menu-icon">📊</span><span class="menu-text">Dashboard</span></a></li>
+          <li><a href="biodata.html" class="menu-item"><span class="menu-icon">👤</span><span class="menu-text">Employee Bio Data</span></a></li>
+          <li><a href="training.html" class="menu-item"><span class="menu-icon">📚</span><span class="menu-text">Training Details</span></a></li>
+          <li><a href="project.html" class="menu-item"><span class="menu-icon">🎯</span><span class="menu-text">Projects</span></a></li>
+          <li><a href="users_manager.html" class="menu-item"><span class="menu-icon">👥</span><span class="menu-text">User Management</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="main-content">
+      <header class="top-navbar">
+        <div class="navbar-left">
+          <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+          <h3 class="page-title">Profile</h3>
+        </div>
+        <div class="navbar-right">
+          <div class="profile-dropdown">
+            <div class="profile-circle"><span class="profile-initial">AJ</span></div>
+            <div class="profile-info"><p class="profile-name">Alex Johnson</p><p class="profile-role">Employee</p></div>
+            <span class="dropdown-arrow">▼</span>
+            <div class="dropdown-menu">
+              <a href="profile.html" class="dropdown-item">View Profile</a>
+              <a href="settings.html" class="dropdown-item">Settings</a>
+              <hr>
+              <a href="login.html" class="dropdown-item logout">Logout</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="content-area">
+        <div class="content-card card-lg profile-v2">
+
+          <div class="card-header">
+            <h2>My Profile</h2>
+            <p class="card-subtitle">Personal and employment information</p>
+          </div>
+
+          <div class="profile-v2-grid">
+            <div class="profile-v2-left">
+              <div class="avatar-xl">AJ</div>
+              <h3 class="pv-name">Alex Johnson</h3>
+              <p class="pv-role">Admin</p>
+              <div class="pv-contact">
+                <p class="pv-item"><strong>Email:</strong> alex.johnson@example.com</p>
+                <p class="pv-item"><strong>Phone:</strong> +1 (555) 000-0000</p>
+              </div>
+              <div class="pv-actions">
+                <a href="edit_profile.html" class="btn btn-primary">Edit Profile</a>
+              </div>
+            </div>
+
+            <div class="profile-v2-right">
+              <div class="pv-section">
+                <h4>Personal Information</h4>
+                <div class="pv-row"><span>Full Name</span><span>Alex Johnson</span></div>
+                <div class="pv-row"><span>Email</span><span>alex.johnson@example.com</span></div>
+                <div class="pv-row"><span>Phone</span><span>+1 (555) 000-0000</span></div>
+              </div>
+
+              <div class="pv-section">
+                <h4>Employment</h4>
+                <div class="pv-row"><span>Department</span><span>Software Development</span></div>
+                <div class="pv-row"><span>Role</span><span>Admin</span></div>
+                <div class="pv-row"><span>Status</span><span>Active</span></div>
+               
+              </div>
+
+              <div class="pv-section">
+                <h4>Module Permissions</h4>
+                <ul class="permission-list">
+                  <li><strong>Bio Data:</strong> View, Edit</li>
+                  <li><strong>Training:</strong> View</li>
+                  <li><strong>Projects:</strong> View, Create</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./scripts.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      const pd = document.querySelector('.profile-dropdown');
+      if(pd){
+        const menu = pd.querySelector('.dropdown-menu');
+        pd.addEventListener('click', function(e){ e.stopPropagation(); menu.classList.toggle('show'); });
+        document.addEventListener('click', function(){ menu.classList.remove('show'); });
+      }
+    });
+  </script>
+</body>
+</html>

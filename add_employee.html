@@ -45,8 +45,8 @@
                         </div>
                         <span class="dropdown-arrow">▼</span>
                         <div class="dropdown-menu">
-                            <a href="#" class="dropdown-item">View Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
+                            <a href="profile.html" class="dropdown-item">View Profile</a>
+                            <a href="settings.html" class="dropdown-item">Settings</a>
                             <hr>
                             <a href="login.html" class="dropdown-item logout">Logout</a>
                         </div>
@@ -62,118 +62,344 @@
                         <p class="card-subtitle">Fill in the employee information below</p>
                     </div>
 
-                    <form class="biodata-form" method="POST" action="/api/employees/create/">
-                        
-                        <!-- Personal Information Section -->
-                        <div class="form-section">
-                            <h3 class="section-title">Personal Information</h3>
-                            
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="firstName">First Name *</label>
-                                    <input type="text" id="firstName" name="first_name" placeholder="Enter first name" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="lastName">Last Name *</label>
-                                    <input type="text" id="lastName" name="last_name" placeholder="Enter last name" required>
-                                </div>
-                            </div>
+                                        <form class="biodata-form" method="POST" action="/api/employees/create/">
 
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="email">Email Address *</label>
-                                    <input type="email" id="email" name="email" placeholder="employee@stackly.com" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="phone">Phone Number</label>
-                                    <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
-                                </div>
-                            </div>
+            <!-- If using Django template, add {% csrf_token %} here -->
 
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="dob">Date of Birth</label>
-                                    <input type="date" id="dob" name="dob">
-                                </div>
-                                <div class="form-group">
-                                    <label for="gender">Gender</label>
-                                    <select id="gender" name="gender">
-                                        <option value="">Select</option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                        <option value="Other">Other</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+            <!-- Personal Details -->
+            <div class="form-section">
+                <h3 class="section-title">Personal Details</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="full_name">Name *</label>
+                        <input id="full_name" name="full_name" type="text" required placeholder="Full name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date of Birth</label>
+                        <input id="dob" name="dob" type="date" />
+                    </div>
+                </div>
 
-                        <!-- Employment Information Section -->
-                        <div class="form-section">
-                            <h3 class="section-title">Employment Information</h3>
-                            
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="department">Department *</label>
-                                    <select id="department" name="department" required>
-                                        <option value="">Select Department</option>
-                                        <option value="Software Development">Software Development</option>
-                                        <option value="HR">HR</option>
-                                        <option value="Finance">Finance</option>
-                                        <option value="Operations">Operations</option>
-                                        <option value="Training & Development">Training & Development</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="position">Position *</label>
-                                    <input type="text" id="position" name="position" placeholder="e.g., Senior Developer" required>
-                                </div>
-                            </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="gender">
+                            <option value="">Select</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Non-binary</option>
+                            <option>Prefer not to say</option>
+                        </select>
+                    </div>
 
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="joinDate">Joining Date *</label>
-                                    <input type="date" id="joinDate" name="joining_date" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="manager">Reporting Manager</label>
-                                    <input type="text" id="manager" name="manager" placeholder="Manager's name">
-                                </div>
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label for="marital_status">Marital Status</label>
+                        <select id="marital_status" name="marital_status">
+                            <option value="">Select</option>
+                            <option>Single</option>
+                            <option>Married</option>
+                            <option>Divorced</option>
+                            <option>Widowed</option>
+                        </select>
+                    </div>
+                </div>
 
-                        <!-- Address Section -->
-                        <div class="form-section">
-                            <h3 class="section-title">Address</h3>
-                            
-                            <div class="form-row">
-                                <div class="form-group full-width">
-                                    <label for="address">Street Address</label>
-                                    <input type="text" id="address" name="address" placeholder="123 Main Street">
-                                </div>
-                            </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="contact_number">Contact Number *</label>
+                        <input id="contact_number" name="contact_number" type="tel" required placeholder="+1 (555) 000-0000" />
+                    </div>
+                    <div class="form-group">
+                        <label for="emergency_contact">Emergency Contact No</label>
+                        <input id="emergency_contact" name="emergency_contact" type="tel" placeholder="+1 (555) 000-0000" />
+                    </div>
+                </div>
 
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="city">City</label>
-                                    <input type="text" id="city" name="city" placeholder="New York">
-                                </div>
-                                <div class="form-group">
-                                    <label for="state">State</label>
-                                    <input type="text" id="state" name="state" placeholder="NY">
-                                </div>
-                                <div class="form-group">
-                                    <label for="zip">ZIP Code</label>
-                                    <input type="text" id="zip" name="zip" placeholder="10001">
-                                </div>
-                            </div>
-                        </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="personal_email">Email *</label>
+                        <input id="personal_email" name="personal_email" type="email" required placeholder="name@example.com" />
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input id="address" name="address" type="text" placeholder="Street, City, State, ZIP" />
+                    </div>
+                </div>
 
-                        <!-- Form Actions -->
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-primary">Create Employee</button>
-                            <a href="biodata.html" class="btn btn-secondary" style="text-decoration: none; text-align: center;">Cancel</a>
-                        </div>
-                    </form>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="aadhar_no">Aadhar Card No</label>
+                        <input id="aadhar_no" name="aadhar_no" type="text" inputmode="numeric" placeholder="xxxx xxxx xxxx" />
+                    </div>
+                    <div class="form-group">
+                        <label for="pan_no">PAN Card No</label>
+                        <input id="pan_no" name="pan_no" type="text" placeholder="ABCDE1234F" />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="bank_details">Bank Details</label>
+                        <input id="bank_details" name="bank_details" type="text" placeholder="Bank name, A/C no., IFSC" />
+                    </div>
+                    <div class="form-group">
+                        <label for="experience_type">Fresher or Experience</label>
+                        <select id="experience_type" name="experience_type">
+                            <option value="">Select</option>
+                            <option value="fresher">Fresher</option>
+                            <option value="experienced">Experienced</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Educational Qualifications -->
+            <div class="form-section">
+                <h3 class="section-title">Educational Qualifications</h3>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>SSC - School & Location</label>
+                        <input name="ssc_school" type="text" placeholder="School name and location" />
+                    </div>
+                    <div class="form-group">
+                        <label>SSC - Year of Passing</label>
+                        <input name="ssc_year" type="number" min="1900" max="2100" placeholder="e.g., 2010" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>SSC - Percentage / Grade</label>
+                        <input name="ssc_grade" type="text" placeholder="e.g., 85% or A" />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>SSLC - School & Location</label>
+                        <input name="sslc_school" type="text" placeholder="School name and location" />
+                    </div>
+                    <div class="form-group">
+                        <label>SSLC - Year of Passing</label>
+                        <input name="sslc_year" type="number" min="1900" max="2100" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>SSLC - Percentage / Grade</label>
+                        <input name="sslc_grade" type="text" />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Under Graduation (Degree)</label>
+                        <input name="ug_degree" type="text" />
+                    </div>
+                    <div class="form-group">
+                        <label>UG - Institution</label>
+                        <input name="ug_institution" type="text" />
+                    </div>
+                    <div class="form-group">
+                        <label>UG - Year</label>
+                        <input name="ug_year" type="number" min="1900" max="2100" />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label>Certification Courses (if any)</label>
+                        <input name="certifications" type="text" placeholder="Course / Institution / Year (comma separated)" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Work Experience -->
+            <div class="form-section">
+                <h3 class="section-title">Work Experience</h3>
+
+                <!-- Employer 1 -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Previous Employer</label>
+                        <input name="prev_employer_1" type="text" />
+                    </div>
+                    <div class="form-group">
+                        <label>Designation</label>
+                        <input name="prev_designation_1" type="text" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Duration</label>
+                        <input name="prev_duration_1" type="text" placeholder="e.g., Jan 2020 - Dec 2021" />
+                    </div>
+                    <div class="form-group">
+                        <label>Email id</label>
+                        <input name="prev_email_1" type="email" />
+                    </div>
+                </div>
+
+                <!-- Employer 2 -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Previous Employer</label>
+                        <input name="prev_employer_2" type="text" />
+                    </div>
+                    <div class="form-group">
+                        <label>Designation</label>
+                        <input name="prev_designation_2" type="text" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Duration</label>
+                        <input name="prev_duration_2" type="text" />
+                    </div>
+                    <div class="form-group">
+                        <label>Email id</label>
+                        <input name="prev_email_2" type="email" />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Technical Skills</label>
+                        <input name="technical_skills" type="text" placeholder="Comma separated" />
+                    </div>
+                    <div class="form-group">
+                        <label>Soft Skills</label>
+                        <input name="soft_skills" type="text" placeholder="Comma separated" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- References -->
+            <div class="form-section">
+                <h3 class="section-title">References</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Reference Name</label>
+                        <input name="reference_name" type="text" />
+                    </div>
+                    <div class="form-group">
+                        <label>Contact Number</label>
+                        <input name="reference_contact" type="tel" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Details -->
+            <div class="form-section">
+                <h3 class="section-title">Professional Details</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Employee ID</label>
+                        <input name="employee_id" type="text" placeholder="If assigned" />
+                    </div>
+                    <div class="form-group">
+                        <label>Designation</label>
+                        <input name="designation" type="text" />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Department</label>
+                        <input name="department" type="text" />
+                    </div>
+                    <div class="form-group">
+                        <label>Date of Joining</label>
+                        <input name="date_of_joining" type="date" />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Work Mode</label>
+                        <select name="work_mode">
+                            <option value="">Select</option>
+                            <option>Remote</option>
+                            <option>Onsite</option>
+                            <option>Hybrid</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Work Location</label>
+                        <input name="work_location" type="text" />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Official Mail Id</label>
+                        <input name="official_email" type="email" />
+                    </div>
+                    <div class="form-group">
+                        <label>Razor Pay Login</label>
+                        <input name="razorpay_login" type="text" />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Laptop Received Date</label>
+                        <input name="laptop_received_date" type="date" />
+                    </div>
+                    <div class="form-group">
+                        <label>Laptop Received Location</label>
+                        <input name="laptop_received_location" type="text" />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Trainer Name</label>
+                        <input name="trainer_name" type="text" />
+                    </div>
+                    <div class="form-group">
+                        <label>Training Topic</label>
+                        <input name="training_topic" type="text" />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Training From Date</label>
+                        <input name="training_from" type="date" />
+                    </div>
+                    <div class="form-group">
+                        <label>Training To Date</label>
+                        <input name="training_to" type="date" />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Project Allocation Date</label>
+                        <input name="project_allocation_date" type="date" />
+                    </div>
+                    <div class="form-group">
+                        <label>Project Name</label>
+                        <input name="project_name" type="text" />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Scrum Master Name</label>
+                        <input name="scrum_master" type="text" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions btn-group">
+                <button type="submit" class="btn btn-primary">Create Employee</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+            </div>
+
+            <p id="formMessage" class="note" style="display:none;"></p>
+        </form>
                 </div>
             </div>
         </div>

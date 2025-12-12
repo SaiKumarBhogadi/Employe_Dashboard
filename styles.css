@@ -19,6 +19,108 @@
     --shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
+/* ============================================================
+     PROFILE-V2 STYLES (scoped)
+     ============================================================ */
+.profile-v2 .card-header h2 {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.profile-v2 .card-subtitle {
+    color: var(--text-gray);
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.card-lg { max-width: 900px; margin: 0 auto; }
+
+.profile-v2-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 28px;
+    align-items: start;
+}
+
+.profile-v2-left {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+}
+
+.avatar-xl {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--secondary-teal), #4DAAA8);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 28px;
+    margin: 0 auto 12px;
+}
+
+.pv-name {
+    margin: 8px 0 6px;
+    font-size: 18px;
+    color: var(--primary-dark);
+}
+
+.pv-role {
+    margin: 0 0 14px;
+    color: var(--text-gray);
+    font-size: 14px;
+}
+
+.pv-contact .pv-item {
+    font-size: 14px;
+    color: var(--text-gray);
+    margin: 8px 0;
+}
+
+.pv-actions { margin-top: 14px; }
+
+.profile-v2-right {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: var(--shadow-sm);
+}
+
+.pv-section { margin-bottom: 20px; }
+
+.pv-section h4 {
+    margin: 0 0 10px 0;
+    font-size: 15px;
+    color: var(--primary-dark);
+}
+
+.pv-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 14px;
+    color: var(--text-gray);
+}
+
+.pv-row span:first-child { color: var(--text-dark); font-weight: 600; }
+
+.permission-list { list-style: none; padding-left: 0; margin: 0; }
+.permission-list li { margin: 8px 0; font-size: 14px; color: var(--text-gray); }
+
+@media (max-width: 900px) {
+    .profile-v2-grid { grid-template-columns: 1fr; }
+    .profile-v2-left { text-align: left; }
+}
+
+
+
+
 /* Global Reset & Base Styles */
 * {
     margin: 0;
@@ -26,7 +128,8 @@
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     height: 100%;
     width: 100%;
 }
@@ -69,6 +172,7 @@ body {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -173,11 +277,13 @@ body {
 /* Logo image styling */
 .login-logo {
     text-align: center;
-    margin-bottom: 40px; /* More space below the logo */
+    margin-bottom: 40px;
+    /* More space below the logo */
 }
 
 .logo-image {
-    max-width: 180px;      /* Adjust this size to fit your logo */
+    max-width: 180px;
+    /* Adjust this size to fit your logo */
     height: auto;
     display: block;
     margin: 0 auto;
@@ -241,7 +347,7 @@ body {
     width: 180px;
     height: auto;
     min-width: 45px;
-    
+
     font-size: 24px;
 }
 
@@ -452,6 +558,7 @@ body {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -537,6 +644,34 @@ body {
 /* ============================================================
    BIO DATA FORM STYLES
    ============================================================ */
+/* Responsive header row */
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; 
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+/* Make button responsive */
+.public-btn {
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    .header-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .public-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
 
 .biodata-form {
     max-width: 900px;
@@ -686,7 +821,7 @@ body {
 }
 
 /* Desktop - No scrolling needed */
-@media (min-width: 1025px) {
+@media (min-width: 1440px) {
     .table-wrapper {
         overflow-x: visible;
     }
@@ -716,6 +851,7 @@ body {
         padding: 0 12px;
     }
 }
+
 /* ============================================================
    EMPLOYEE BIODATA TABLE STYLES
    ============================================================ */
@@ -787,6 +923,7 @@ body {
         width: 100%;
     }
 }
+
 /* ============================================================
    TRAINING PAGE SPECIFIC STYLES
    ============================================================ */
@@ -917,6 +1054,133 @@ body {
     background-color: #FEE2E2;
 }
 
+
+
+/* ============================================================
+   SETTINGS PAGE STYLES
+   ============================================================ */
+
+.settings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 24px;
+}
+
+.settings-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+}
+
+.settings-card h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin: 0 0 18px 0;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--secondary-teal);
+    display: inline-block;
+}
+
+.settings-card p {
+    margin: 0 0 16px 0;
+    color: var(--text-gray);
+    font-size: 14px;
+}
+
+.settings-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.settings-card label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+    display: block;
+}
+
+.settings-card input,
+.settings-card select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid var(--border-light);
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--text-gray);
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.settings-card input:focus,
+.settings-card select:focus {
+    outline: none;
+    border-color: var(--secondary-teal);
+    box-shadow: 0 0 0 3px rgba(103, 209, 198, 0.1);
+}
+
+.password-input-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.password-input-group input {
+    flex: 1;
+}
+
+.toggle-password {
+    padding: 8px 12px;
+    border: 1.5px solid var(--border-light);
+    border-radius: 8px;
+    background: var(--white);
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.toggle-password:hover {
+    border-color: var(--secondary-teal);
+    background: #F1F6F4;
+}
+
+.help-text {
+    font-size: 12px;
+    color: var(--text-gray);
+    display: block;
+    margin-top: 4px;
+}
+
+.settings-card .btn {
+    align-self: flex-start;
+    margin-top: 8px;
+}
+
+.btn.danger {
+    background-color: var(--danger);
+    color: var(--white);
+}
+
+.btn.danger:hover {
+    background-color: #e53e3e;
+    transform: translateY(-2px);
+}
+
+/* Responsive settings grid */
+@media (max-width: 768px) {
+    .settings-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .settings-card {
+        padding: 18px;
+    }
+}
+
+
 /* Modal Styles */
 .modal {
     display: none;
@@ -963,6 +1227,7 @@ body {
         transform: translateY(30px);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
@@ -1258,6 +1523,7 @@ body {
         text-align: center;
     }
 }
+
 /* ============================================================
    PROJECTS PAGE STYLES
    ============================================================ */
@@ -1616,6 +1882,7 @@ body {
         grid-template-columns: 1fr !important;
     }
 }
+
 /* ============================================================
    DASHBOARD SPECIFIC STYLES
    ============================================================ */
@@ -2015,11 +2282,11 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.toggle-switch input:checked + .slider {
+.toggle-switch input:checked+.slider {
     background-color: var(--secondary-teal);
 }
 
-.toggle-switch input:checked + .slider::before {
+.toggle-switch input:checked+.slider::before {
     transform: translateX(20px);
 }
 
@@ -2647,6 +2914,7 @@ body {
    ============================================================ */
 
 @media (max-width: 768px) {
+
     /* Show toggle button */
     .sidebar-toggle {
         display: flex;
